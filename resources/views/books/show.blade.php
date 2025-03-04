@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-3">
                     @if ($book->cover_photo)
-                        <img src="{{ asset('/storage/covers/' . $book->cover_photo) }}" alt="{{ $book->cover_photo }}" class="w-100">
+                        <img src="{{ $book->cover_photo }}" alt="{{ $book->name }}" class="w-100">
                     @else
                         <i class="fa-solid fa-image fa-10x text-secondary d-block text-center"></i>
                     @endif
