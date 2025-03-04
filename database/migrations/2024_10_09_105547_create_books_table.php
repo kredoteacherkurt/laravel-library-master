@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 50);
             $table->string('year_published', 4);
-            $table->string('cover_photo', 50)->nullable();
+            $table->longText('cover_photo', 50)->nullable();
             $table->unsignedBigInteger('author_id')->nullable();
             $table->timestamps();
 
