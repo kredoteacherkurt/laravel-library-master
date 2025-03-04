@@ -43,21 +43,21 @@ class BookController extends Controller
         $this->book->year_published = $request->year_published;
         $this->book->author_id = $request->author_id;
         if($request->cover_photo){
-            $this->book->cover_photo = $this->saveCover($request);
+            $this->book->cover_photo = 'data:image/' . $request->cover_photo->extension() . ';base64,' . base64_encode(file_get_contents($request->cover_photo));
         }
         $this->book->save();
 
         return redirect()->back();
     }
 
-    public function saveCover($request)
-    {
-        $cover_name = time().".". $request->cover_photo->extension();
+    // public function saveCover($request)
+    // {
+    //     $cover_name = time().".". $request->cover_photo->extension();
 
-        $request->cover_photo->storeAs(self::LOCAL_STORAGE_FOLDER, $cover_name,'s3');
+    //     $request->cover_photo->storeAs(self::LOCAL_STORAGE_FOLDER, $cover_name,'s3');
 
-        return $cover_name;
-    }
+    //     return $cover_name;
+    // }
 
     public function show($id)
     {
