@@ -54,7 +54,7 @@ class BookController extends Controller
     {
         $cover_name = time().".". $request->cover_photo->extension();
 
-        $request->cover_photo->storeAs(self::LOCAL_STORAGE_FOLDER, $cover_name);
+        $request->cover_photo->storeAs(self::LOCAL_STORAGE_FOLDER, $cover_name,'s3');
 
         return $cover_name;
     }
@@ -119,7 +119,7 @@ class BookController extends Controller
 
         return view('books.delete')->with('book',$book);
     }
-    
+
     public function destroy($id)
     {
         $book = $this->book->findOrFail($id);
